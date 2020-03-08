@@ -1,19 +1,19 @@
 # API_Server_Test
 I don't know how to change the name of the Repository. 
 
-###Running the script
+### Running the script
 
 Anyways, in order to run the script type:
 
 'mvn spring-boot:run'
 
 
-###Problems
+### Problems
 
 If there are any problems let me know! Or if you figure it out, write in here how to resolve it!
 
 
-###Adding Code
+### Adding Code
 
 I've been copying and pasting from 
 
