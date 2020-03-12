@@ -65,7 +65,7 @@ connect
 		Used to connect to the database. You may need to call this in other classes.  
 
 */
-	public static void connect() 
+	public static Connection connect() 
 	{  
         	Connection conn = null;  
         
@@ -78,27 +78,15 @@ connect
               
             		System.out.println("Connection to SQLite has been established.");  
 
-			getData(conn);
+			return conn;
               
         	} 
 		catch (Exception e) 
 		{  
-            		System.out.println(e.getMessage());  
+            		System.out.println(e.getMessage()); 
+			return conn; 
         	} 
-		finally 
-		{  
-            		try 
-			{  
-                		if (conn != null) 
-				{  
-                    			conn.close();  
-                		}  
-            		} 
-			catch (SQLException ex) 
-			{  
-                		System.out.println(ex.getMessage());  
-            		}  
-        	} 
+		
 	} 
 
 
@@ -183,6 +171,7 @@ getData
 				statement.execute("DROP TABLE movies");	
 				statement.close();
 				System.out.println("Table Dropped, Please run again.");
+				return;
 			} catch (Exception e2)
 			{
     				System.out.println(e2);
@@ -195,6 +184,7 @@ getData
 
 	public static void main(String[] args) {
 		SpringApplication.run(WebServerApplication.class, args);
+		Connection conn;
 
 		try
 		{
@@ -202,7 +192,20 @@ getData
 		}
 		finally
 		{
-			connect();
+			conn = connect();
+			getData(conn);
+			try 
+			{  
+                		if (conn != null) 
+				{  
+                    			conn.close();  
+                		}  
+            		} 
+			catch (SQLException ex) 
+			{  
+                		System.out.println(ex.getMessage());  
+            		}  
+			
 		}
 	}
 
