@@ -18,44 +18,54 @@ import com.SiliconMoon.WebServer.WebServerApplication;
 public class WebController {
 
 	@RequestMapping("/movie")
-	public GetResponse[] Sample(@RequestParam(value = "title",
+	public GetResponse[] findMovieTitle(@RequestParam(value = "title",
 	defaultValue = "None") String title) {
-		GetResponse response = new GetResponse();
 
 		try
 		{
-		
+			// Create connection and statement in with parameters that let you scroll through the query
 			Connection conn = WebServerApplication.connect();
 			Statement statement = conn.createStatement(
                                       ResultSet.TYPE_SCROLL_INSENSITIVE,
                                       ResultSet.CONCUR_UPDATABLE);
-				
+			
+			// SQL QUERY that retrieves all rows and searches for entities close to the parameter	
 			String sql = "SELECT * FROM movies WHERE entity LIKE \'%" + title + "%\'";
-			System.out.println(sql);
+
+			//Get the result
 			ResultSet res = statement.executeQuery(sql);
 
 			int counter=0;
+			int i=0;
 
+			//See how many results are given.
 			while (res.next()) 
 			{
-				counter++;			
+				counter++;		
        			}
-			System.out.println(counter);
+
+			//Set the cursor to before the first
 			res.beforeFirst();
+			//Create an array of responses with the amount of counter
 			GetResponse resArray[] = new GetResponse[counter];
+
+			//Must create a new response with every entry
       			while (res.next()) 
-			{
-				
+			{	
+				GetResponse response = new GetResponse();
 				response.setYear(res.getInt("year"));
 				response.setCategory(res.getString("category"));
 				response.setWinner(res.getString("winner"));
 				response.setEntity(res.getString("entity"));
-
-				resArray[counter] = response;
-			
+				
+				if (i <= counter)
+				{
+					resArray[i] = response;
+				}
+				i++;
 				
        			}
-      
+      			//Close all the open connections so we don't lock ourselves out of the database. 
 			res.close();
 			statement.close();
 			conn.close();

@@ -110,8 +110,8 @@ getData
 		//Buffers through the file "Oscar_Winner_data_csv.csv"
 		try (BufferedReader in = new BufferedReader(new FileReader("./src/main/resources/Oscar_Winner_data_csv.csv"))) 
 		{
-			Statement statement = conn.createStatement();
 			String sql = "";
+			Statement statement = conn.createStatement();
 
 			//read the first line of the file
 			line = in.readLine();
@@ -167,10 +167,7 @@ getData
 			//dropping table for testing purposes
 			try
 			{
-				Statement statement = conn.createStatement();
-				statement.execute("DROP TABLE movies");	
-				statement.close();
-				System.out.println("Table Dropped, Please run again.");
+				System.out.println("Table already created! Hi!");
 				return;
 			} catch (Exception e2)
 			{
