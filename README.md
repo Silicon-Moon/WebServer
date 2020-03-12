@@ -22,5 +22,5 @@ I've been copying and pasting from
 
 ##RESTful API
 
-* /movie: to search for a movie
-	*?title=[title of movie or part of a title of movie]
+- /movie: to search for a movie
+	- ?title=[title of movie or part of a title of movie]
