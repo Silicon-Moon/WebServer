@@ -4,6 +4,7 @@ public class GetResponse {
 	private String category;
 	private String winner;
 	private String entity;
+	private String genre;
 
 	public void setYear(int year)
 	{
@@ -23,6 +24,11 @@ public class GetResponse {
 	public void setEntity(String entity)
 	{
 		this.entity = entity;
+	}
+	
+	public void setGenre(Strign genre)
+	{
+	    this.genre = genre;
 	}
 
 
@@ -44,5 +50,9 @@ public class GetResponse {
 	public String getEntity()
 	{
 		return entity;
+	}
+	public String getGenre()
+	{
+	    return genre;
 	}
 }

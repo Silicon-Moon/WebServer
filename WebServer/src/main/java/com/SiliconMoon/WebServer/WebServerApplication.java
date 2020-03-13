@@ -156,6 +156,28 @@ getData
 				statement.execute(sql);
 				
 			}
+    		
+    		//Adding genres to database
+    		sql = "ALTER TABLE movies ADD genre VARCHAR(512)";
+    		statement.execute(sql);
+    		
+    		sql = "SELECT DISTINCT entity FROM movies";
+    		
+    		//Get the result
+            ResultSet res = statement.executeQuery(sql);
+
+            
+            while (res.next()) 
+            {
+                String url = "http://www.omdbapi.com/?apikey=cce70398&t=" + res.getString("entity");
+                JsonReader json = new JsonReader(url);
+                if(json.isResponse())
+                {
+                    sql = "UPDATE movies SET genre = " + json.getField("Genre") +
+                            " WHERE entity = " res.getString("entity)");
+                    statement.execute(sql);
+                }
+            }
 			
 			//close the statement. Will need to be reopened if a query is being made or new data is being added. 
     			statement.close();
