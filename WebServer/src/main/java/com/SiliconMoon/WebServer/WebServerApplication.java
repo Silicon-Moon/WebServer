@@ -65,7 +65,7 @@ connect
 		Used to connect to the database. You may need to call this in other classes.  
 
 */
-	public static void connect() 
+	public static Connection connect() 
 	{  
         	Connection conn = null;  
         
@@ -78,27 +78,15 @@ connect
               
             		System.out.println("Connection to SQLite has been established.");  
 
-			getData(conn);
+			return conn;
               
         	} 
 		catch (Exception e) 
 		{  
-            		System.out.println(e.getMessage());  
+            		System.out.println(e.getMessage()); 
+			return conn; 
         	} 
-		finally 
-		{  
-            		try 
-			{  
-                		if (conn != null) 
-				{  
-                    			conn.close();  
-                		}  
-            		} 
-			catch (SQLException ex) 
-			{  
-                		System.out.println(ex.getMessage());  
-            		}  
-        	} 
+		
 	} 
 
 
@@ -122,8 +110,8 @@ getData
 		//Buffers through the file "Oscar_Winner_data_csv.csv"
 		try (BufferedReader in = new BufferedReader(new FileReader("./src/main/resources/Oscar_Winner_data_csv.csv"))) 
 		{
-			Statement statement = conn.createStatement();
 			String sql = "";
+			Statement statement = conn.createStatement();
 
 			//read the first line of the file
 			line = in.readLine();
@@ -179,10 +167,8 @@ getData
 			//dropping table for testing purposes
 			try
 			{
-				Statement statement = conn.createStatement();
-				statement.execute("DROP TABLE movies");	
-				statement.close();
-				System.out.println("Table Dropped, Please run again.");
+				System.out.println("Table already created! Hi!");
+				return;
 			} catch (Exception e2)
 			{
     				System.out.println(e2);
@@ -195,6 +181,7 @@ getData
 
 	public static void main(String[] args) {
 		SpringApplication.run(WebServerApplication.class, args);
+		Connection conn;
 
 		try
 		{
@@ -202,7 +189,20 @@ getData
 		}
 		finally
 		{
-			connect();
+			conn = connect();
+			getData(conn);
+			try 
+			{  
+                		if (conn != null) 
+				{  
+                    			conn.close();  
+                		}  
+            		} 
+			catch (SQLException ex) 
+			{  
+                		System.out.println(ex.getMessage());  
+            		}  
+			
 		}
 	}
 

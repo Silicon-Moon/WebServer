@@ -18,3 +18,9 @@ If there are any problems let me know! Or if you figure it out, write in here ho
 I've been copying and pasting from 
 
 [Spring-boot Site](https://adityasridhar.com/posts/how-to-create-simple-rest-apis-with-springboot)
+
+
+##RESTful API
+
+- /movie: to search for a movie
+	- ?title=[title of movie or part of a title of movie]
