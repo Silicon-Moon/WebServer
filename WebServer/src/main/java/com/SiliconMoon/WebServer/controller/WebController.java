@@ -20,7 +20,7 @@ public class WebController {
 		try
         	{
             		// Create connection and statement in with parameters that let you scroll through the query
-            		Connection conn = WebServerApplication.connect();
+            		Connection conn = WebServerApplication.connect("new.db");
             		Statement statement = conn.createStatement(
 				ResultSet.TYPE_SCROLL_INSENSITIVE,
 				ResultSet.CONCUR_UPDATABLE);
