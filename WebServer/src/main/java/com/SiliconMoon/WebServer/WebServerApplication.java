@@ -184,11 +184,12 @@ getData
 	}
 
 	
-	public static void getDataFromOmdb(Connection conn)
+	public static void getDataFromOmdb(Connection conn, Connection omdb)
 	{
 		//Buffers through the file "Oscar_Winner_data_csv.csv"
 		try
 		{
+			System.out.println("Creating OMDB Table...");
 			String sql = "";
 			Statement statement = conn.createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -249,7 +250,7 @@ getData
 			conn = connect("new.db");
 			connOmdb = connect("omdb.db");
 			getData(conn);
-			getDataFromOmdb(connOmdb);
+			getDataFromOmdb(conn, connOmdb);
 			try 
 			{  
                 		if (conn != null) 
