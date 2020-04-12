@@ -1,10 +1,16 @@
 package com.SiliconMoon.WebServer.models;
 public class GetResponse {
+	private int number;
 	private int year;
 	private String category;
 	private String winner;
 	private String entity;
 
+	public void setNumber(int number)
+	{
+		this.number = number;
+	}
+	
 	public void setYear(int year)
 	{
 		this.year = year;
@@ -26,6 +32,10 @@ public class GetResponse {
 	}
 
 
+	public int getNumber()
+	{
+		return number;
+	}
 	public int getYear() 
 	{
 		return year;

@@ -2,14 +2,10 @@ package com.SiliconMoon.WebServer.controller;
 
 import java.sql.Connection; 
 import java.sql.ResultSet;
-import java.sql.Statement; 
-import java.sql.DriverManager; 
-import java.sql.DatabaseMetaData; 
-import java.sql.SQLException;
-import java.util.Locale;
+import java.sql.Statement;
 
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.SiliconMoon.WebServer.models.GetResponse;
@@ -51,6 +47,7 @@ public class WebController {
                 	while (res.next()) 
             		{   
                 		GetResponse response = new GetResponse();
+                		response.setNumber(res.getInt("number"));
                 		response.setYear(res.getInt("year"));
                 		response.setCategory(res.getString("category"));
                 		response.setWinner(res.getString("winner"));
@@ -89,9 +86,8 @@ public class WebController {
 	}
 
 
-	@RequestMapping("/movie/category")
-    	public GetResponse[] findMovieCategory(@RequestParam(value = "category",
-    	defaultValue = "None") String category) {
+	@RequestMapping("/movie/category/{category}")
+    	public GetResponse[] findMovieCategory(@PathVariable(value = "category") String category) {
 		category = category.toLowerCase();
 		// SQL QUERY that retrieves all rows and searches for entities close to the parameter   
             	String sql = "SELECT * FROM movies WHERE lower(category) LIKE \'%" + category + "%\'";
@@ -101,9 +97,8 @@ public class WebController {
 
 
 
-	@RequestMapping("/movie/title")
-	public GetResponse[] findMovieTitle(@RequestParam(value = "title",
-	defaultValue = "None") String title) {
+	@RequestMapping("/movie/title/{title}")
+	public GetResponse[] findMovieTitle(@PathVariable(value = "title") String title) {
 		title = title.toLowerCase();			
 		// SQL QUERY that retrieves all rows and searches for entities close to the parameter	
 		String sql = "SELECT * FROM movies WHERE lower(entity) LIKE \'%" + title + "%\'";
@@ -112,14 +107,14 @@ public class WebController {
 	
 	}
 	
-	@RequestMapping("/movie/genre")
-    	public GetResponse[] findMovieGenre(@RequestParam(value = "genre",
-    	defaultValue = "None") String genre) {
+	@RequestMapping("/movie/genre/{genre}")
+    	public GetResponse[] findMovieGenre(@PathVariable(value = "genre") String genre) {
       		genre = genre.toLowerCase();
             	// SQL QUERY that retrieves all rows and searches for entities close to the parameter   
             	String sql = "SELECT * FROM movies WHERE lower(entity) LIKE \'%" + genre + "%\'";
 		GetResponse resArray[] = requestGenerator(sql);
             	return resArray;
       	}
+
 }
 
