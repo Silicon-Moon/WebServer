@@ -1,7 +1,7 @@
 package com.SiliconMoon.WebServer.models;
 
 public class SingletonGetResponse {
-	
+		//All the returned values into json
 		private int number;
 		private int year;
 		private String released;

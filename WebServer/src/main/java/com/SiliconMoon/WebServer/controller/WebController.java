@@ -23,7 +23,7 @@ public class WebController {
 	
 	}
 
-
+	//Searches for a specific movie category
 	@RequestMapping("/movie/category/{category}")
 	public SingletonGetResponse[] findMovieCategory(@PathVariable(value = "category") String category) {
 		category = category.toLowerCase();
@@ -34,7 +34,7 @@ public class WebController {
 	}
 
 
-
+	//Searches for a specific movie title
 	@RequestMapping("/movie/title/{title}")
 	public SingletonGetResponse[] findMovieTitle(@PathVariable(value = "title") String title) {
 		title = title.toLowerCase();			

@@ -179,19 +179,6 @@ getData
 		return;	
 	}
 
-
-	/* 
-	getDataFromOmdb
-		:parameters:
-			conn: Connection (Data type for derby)
-			omdb: Connection (Data type for derby)
-
-		:returns:
-
-		:Description: 
-			* Creates a table "omdb" in the "omdb" database
-			* pulls matching movies from "movies" database and insert extra information into "omdb" database
-	*/
 	
 	
 	public static void main(String[] args) {

@@ -18,30 +18,40 @@ class WebServerApplicationTests {
 	@Autowired
 	private MockMvc mockMvc;
 
+	//TEST FOR A RETURN OF ALL MOVIES
 	@Test
 	public void collectionMoviesLoads() throws Exception{
 		
 		this.mockMvc.perform(get("/movie")).andDo(print()).andExpect(status().isOk());
 	}
 
+	//TEST FOR A RETURN FROM SINGLETON CATEGORY SEARCH
 	@Test
 	public void singletonCategoryLoads() throws Exception{
 		
 		this.mockMvc.perform(get("/movie/category/actor")).andDo(print()).andExpect(status().isOk());
 	}
 	
+	//TEST FOR A RETURN FROM SINGLETON TITLE SEARCH
 	@Test
 	public void singletonTitleLoads() throws Exception{
 		
 		this.mockMvc.perform(get("/movie/title/cleo")).andDo(print()).andExpect(status().isOk());
 	}
 	
+	
+	//***************    UNIT TEST WRITTEN BEFORE DEVELOPMENT    ****************//
+	
+	
+	//TEST FOR A RETURN FROM SINGLETON ID SEARCH
 	@Test
 	public void singletonIdLoads() throws Exception{
 		
 		this.mockMvc.perform(get("/movie/id/12")).andDo(print()).andExpect(status().isOk());
 	}
 	
+	
+	//TEST FOR A RETURN FROM SINGLETON YEAR SEARCH
 	@Test
 	public void singletonYearLoads() throws Exception{
 		
@@ -49,6 +59,7 @@ class WebServerApplicationTests {
 	}
 	
 	
+	//TEST FOR A RETURN OF ALL WINNERS
 	@Test
 	public void collectionwinnerLoads() throws Exception{
 		
