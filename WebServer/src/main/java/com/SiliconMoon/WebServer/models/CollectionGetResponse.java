@@ -1,5 +1,5 @@
 package com.SiliconMoon.WebServer.models;
-public class GetResponse {
+public class CollectionGetResponse {
 	private int number;
 	private int year;
 	private String category;

@@ -3,17 +3,11 @@ package com.SiliconMoon.WebServer;
 import java.sql.Connection; 
 import java.sql.Statement; 
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.DatabaseMetaData; 
 import java.sql.SQLException;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-
-import java.net.URLEncoder;
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
-import com.mashape.unirest.http.Unirest;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,7 +15,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class WebServerApplication {
 
-	public static String omdbKey = "de1ec873";
+	
 /* 
 
 createNewDatabase
@@ -134,6 +128,7 @@ getData
 
 			sql += ", " + labels[labels.length-1] + " VARCHAR(1024)";
 			sql += ")";
+			
 			statement.execute(sql);	
 
 
@@ -158,6 +153,7 @@ getData
 				sql += " \'" + value[value.length-1].replace("'", "\'\'") + "\')";
 				x++;
 		
+				
 				statement.execute(sql);
 				
 			}
@@ -183,74 +179,34 @@ getData
 		return;	
 	}
 
+
+	/* 
+	getDataFromOmdb
+		:parameters:
+			conn: Connection (Data type for derby)
+			omdb: Connection (Data type for derby)
+
+		:returns:
+
+		:Description: 
+			* Creates a table "omdb" in the "omdb" database
+			* pulls matching movies from "movies" database and insert extra information into "omdb" database
+	*/
 	
-	public static void getDataFromOmdb(Connection conn, Connection omdb)
-	{
-		//Buffers through the file "Oscar_Winner_data_csv.csv"
-		try
-		{
-			System.out.println("Creating OMDB Table...");
-			String sql = "";
-			Statement statement = conn.createStatement(
-					ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_UPDATABLE);
-
-			sql = "SELECT * FROM movies";
-			ResultSet res = statement.executeQuery(sql);
-					
-			//This will create the table with the necessary columns
-			System.out.println("Creating OMDB Table...");
-			//Create a table with Number, Title, Plot, Poster, released, Awards, Director, Actors, Production
-			//while res.next()
-			//get title and year of movie
-			//create a variable for both
-			//plug it in, plug it in
-			
-			System.out.println("Pulling OMDB Data...");
-			HttpResponse <JsonNode> response = Unirest.get("http://www.omdbapi.com/?apikey=" + omdbKey + "&t=a")
-						.asJson();
-
-			String omdbData = response.getBody().toString();
-			omdbData = omdbData.replaceAll("[\"{}]", "");
-			String[] structuredData = omdbData.split(",");
-			
-			//place data into sql table using INSERT!
-			//for (String a: structuredData)
-	            //System.out.println(a);
-			
-		}
-		catch (Exception e)
-		{
-			//dropping table for testing purposes
-			try
-			{
-				System.out.println("Table already created! Hi!");
-				return;
-			} catch (Exception e2)
-			{
-    				System.out.println(e2);
-			}
-			System.out.println(e);
-		}
-		return;
-	}
-
+	
 	public static void main(String[] args) {
 		SpringApplication.run(WebServerApplication.class, args);
 		Connection conn;
-		Connection connOmdb;
 
 		try
 		{
 			createNewDatabase("new.db");
-			createNewDatabase("omdb.db");
 		}
 		finally
 		{
 			conn = connect("new.db");
-			connOmdb = connect("omdb.db");
 			getData(conn);
-			getDataFromOmdb(conn, connOmdb);
+			
 			try 
 			{  
                 		if (conn != null) 
