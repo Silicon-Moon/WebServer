@@ -36,5 +36,24 @@ class WebServerApplicationTests {
 		this.mockMvc.perform(get("/movie/title/cleo")).andDo(print()).andExpect(status().isOk());
 	}
 	
+	@Test
+	public void singletonIdLoads() throws Exception{
+		
+		this.mockMvc.perform(get("/movie/id/12")).andDo(print()).andExpect(status().isOk());
+	}
+	
+	@Test
+	public void singletonYearLoads() throws Exception{
+		
+		this.mockMvc.perform(get("/movie/year/1934")).andDo(print()).andExpect(status().isOk());
+	}
+	
+	
+	@Test
+	public void collectionwinnerLoads() throws Exception{
+		
+		this.mockMvc.perform(get("/movie/winner")).andDo(print()).andExpect(status().isOk());
+	}
+	
 	
 }
