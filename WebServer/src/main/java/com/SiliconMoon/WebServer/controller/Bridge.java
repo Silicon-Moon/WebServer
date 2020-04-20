@@ -13,13 +13,13 @@ import com.mashape.unirest.http.Unirest;
 public class Bridge {
 	public static String omdbKey = "de1ec873";
 	public static int counter=0;
+	public static Connection conn = WebServerApplication.connect("new.db");
 	
 	public static SingletonGetResponse[] singletonRequestGenerator(String sql)
 	{
 		try
-        	{
+        	{ 
         		// Create connection and statement in with parameters that let you scroll through the query
-        		Connection conn = WebServerApplication.connect("new.db");
         		Statement statement = conn.createStatement(
         				ResultSet.TYPE_SCROLL_INSENSITIVE,
         				ResultSet.CONCUR_UPDATABLE);
@@ -88,7 +88,6 @@ public class Bridge {
 		try
         	{
         		// Create connection and statement in with parameters that let you scroll through the query
-        		Connection conn = WebServerApplication.connect("new.db");
         		Statement statement = conn.createStatement(
         				ResultSet.TYPE_SCROLL_INSENSITIVE,
         				ResultSet.CONCUR_UPDATABLE);
