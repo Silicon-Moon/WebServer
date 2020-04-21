@@ -1,5 +1,4 @@
 # WebServer
-============
 
 ### Running the script
 
