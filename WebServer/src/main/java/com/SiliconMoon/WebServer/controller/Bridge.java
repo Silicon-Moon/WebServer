@@ -10,16 +10,37 @@ import com.SiliconMoon.WebServer.models.SingletonGetResponse;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
+/***********************************************************************************************************/
+/***********************************************************************************************************/
+/***********  This class is to create a bridge from the SQL database to the WebServer **********************/
+/***********  This class is to create a bridge from the OMDB server to the WebServer ***********************/
+/***********************************************************************************************************/
+/***********************************************************************************************************/
+
 public class Bridge {
 	public static String omdbKey = "de1ec873";
 	public static int counter=0;
+	public static Connection conn = WebServerApplication.connect("new.db");
 	
+	
+	/* 
+	singletonRequestGenerator
+		:parameters:
+			SQL: String - the query for the SQL database new.db
+
+		:returns:
+			An array of the SingletonGetResponse objects. 
+
+		:Description: 
+			* Because it would take years to pull every movie and awards data from OMDB
+			* I created a separate function to handle small responses, and look for more information
+			* on OMDB. 
+	*/
 	public static SingletonGetResponse[] singletonRequestGenerator(String sql)
 	{
 		try
-        	{
+        	{ 
         		// Create connection and statement in with parameters that let you scroll through the query
-        		Connection conn = WebServerApplication.connect("new.db");
         		Statement statement = conn.createStatement(
         				ResultSet.TYPE_SCROLL_INSENSITIVE,
         				ResultSet.CONCUR_UPDATABLE);
@@ -83,12 +104,26 @@ public class Bridge {
 
 	}
 
+	
+	/* 
+	collectionRequestGenerator
+		:parameters:
+			SQL: String - the query for the SQL database new.db
+
+		:returns:
+			An array of the CollectionGetResponse object. 
+
+		:Description: 
+			* Because it would take years to pull every movie and awards data from OMDB
+			* I created a separate function to handle large responses, so it won't look for more information
+			* Than what is already in the database.
+	*/
+	
 	public static CollectionGetResponse[] collectionRequestGenerator(String sql)
 	{
 		try
         	{
         		// Create connection and statement in with parameters that let you scroll through the query
-        		Connection conn = WebServerApplication.connect("new.db");
         		Statement statement = conn.createStatement(
         				ResultSet.TYPE_SCROLL_INSENSITIVE,
         				ResultSet.CONCUR_UPDATABLE);
@@ -143,6 +178,21 @@ public class Bridge {
 
 	}
 	
+	
+	/* 
+	getDataFromOmdb
+		:parameters:
+			title: String - required parameter of OMDB
+			year: int - Parameter to help find the right movie
+
+		:returns:
+			Array of strings from OMDB's returned json
+
+		:Description: 
+			* passes a quesry to OMDB
+			* returns a json string from OMDB
+	*/
+	
 	public static String[] getDataFromOmdb(String title, int year)
 	{
 		try
@@ -191,6 +241,20 @@ public class Bridge {
 		}
 	}
 	
+	
+	/* 
+	getValue
+		:parameters:
+			json: String[] - the json response from OMDB
+			thing: String - the category that you are looking for the value of. 
+
+		:returns:
+			String of the value in that parameter thing
+
+		:Description: 
+			* searched though array for the category
+			* returns the value associated with that category
+	*/
 	
 	public static String getValue(String[] json, String thing)
 	{

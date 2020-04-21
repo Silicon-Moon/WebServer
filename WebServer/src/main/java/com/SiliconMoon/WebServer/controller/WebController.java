@@ -19,40 +19,32 @@ public class WebController {
 		// SQL QUERY that retrieves all rows and searches for entities close to the parameter	
 		String sql = "SELECT * FROM movies";
 		CollectionGetResponse resArray[] = Bridge.collectionRequestGenerator(sql);
-            	return resArray;
+        return resArray;
 	
 	}
 
-
+	//Searches for a specific movie category
 	@RequestMapping("/movie/category/{category}")
-    	public SingletonGetResponse[] findMovieCategory(@PathVariable(value = "category") String category) {
+	public SingletonGetResponse[] findMovieCategory(@PathVariable(value = "category") String category) {
 		category = category.toLowerCase();
 		// SQL QUERY that retrieves all rows and searches for entities close to the parameter   
-            	String sql = "SELECT * FROM movies WHERE lower(category) LIKE \'%" + category + "%\'";
+	    String sql = "SELECT * FROM movies WHERE lower(category) LIKE \'%" + category + "%\'";
 		SingletonGetResponse resArray[] = Bridge.singletonRequestGenerator(sql);
-            	return resArray;
-    	}
+	    return resArray;
+	}
 
 
-
+	//Searches for a specific movie title
 	@RequestMapping("/movie/title/{title}")
 	public SingletonGetResponse[] findMovieTitle(@PathVariable(value = "title") String title) {
 		title = title.toLowerCase();			
 		// SQL QUERY that retrieves all rows and searches for entities close to the parameter	
 		String sql = "SELECT * FROM movies WHERE lower(entity) LIKE \'%" + title + "%\'";
 		SingletonGetResponse resArray[] = Bridge.singletonRequestGenerator(sql);
-            	return resArray;
+        return resArray;
 	
 	}
 	
-	@RequestMapping("/movie/genre/{genre}")
-    	public SingletonGetResponse[] findMovieGenre(@PathVariable(value = "genre") String genre) {
-      		genre = genre.toLowerCase();
-            	// SQL QUERY that retrieves all rows and searches for entities close to the parameter   
-            	String sql = "SELECT * FROM movies WHERE lower(entity) LIKE \'%" + genre + "%\'";
-		SingletonGetResponse resArray[] = Bridge.singletonRequestGenerator(sql);
-            	return resArray;
-      	}
 
 }
 

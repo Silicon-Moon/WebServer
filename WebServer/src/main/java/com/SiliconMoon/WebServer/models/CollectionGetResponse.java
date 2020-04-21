@@ -1,10 +1,13 @@
 package com.SiliconMoon.WebServer.models;
 public class CollectionGetResponse {
+	//All the returned values into json
 	private int number;
 	private int year;
 	private String category;
 	private String winner;
 	private String entity;
+	
+	
 
 	public void setNumber(int number)
 	{
