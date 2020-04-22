@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Help Page</title>
+
+<link rel="stylesheet" type="text/css" href="help.css">
+
+</head>
+<body>
+	<h1>WebServer</h1> 
+	
+		<h2>Help page :)</h2>
+		
+<div id="div3">
+	<br><h3>Running the script</h3> 
+
+		<p>In order to run the script type:
+
+			<br><div id="div1">mvn spring-boot:run</div>
+
+
+	<h3>Testing the script</h3>
+
+		<p>In order to test the script type:
+
+			<br><div id="div2">./mvnw test</div>
+
+
+	<h3>Problems</h3> 
+
+		<p>If there are any problems let me know! Or if you figure it out, write in here how to resolve it!
+		<ul>
+		<li>Eclipse Problem: In order to run code through eclipse, you have to import the project as a maven project. </li>
+		</ul>
+
+
+	<h3>Adding Code</h3>
+
+		<p>I've been copying and pasting from
+
+		<br><a href="https://adityasridhar.com/posts/how-to-create-simple-rest-apis-with-springboot">Spring-boot Site</a>
+
+		<h4>FOR NEW API's</h4>
+		<ul>
+			<li> Add new API calls to WebController.java in WebServer/src/main/java/com/SiliconMoon/WebServer/controller</li>
+
+			<li> Bridge can be used if you want to create a new response class and don't want to recreate the wheel</li>
+
+			<li> Response classes return all their variable, so if you don't want everything to be returned be sure to create a new response class. </li> 
+		</ul>
+
+
+
+
+	<h2>RESTful API</h2>
+	<ul>
+		<li> /movie: to see a collection of the movies nominated.
+			<ul>
+				<li> EXAMPLE: GET: <a href="http://localhost:8080/movie">http://localhost:8080/movie</a></li>
+			</ul>
+		</li>
+		<li> /movie/title/{title}: to search for a movie title
+			<ul>
+				<li>EXAMPLE: GET: <a href="http://localhost:8080/movie/title/cleo">http://localhost:8080/movie/title/cleo</a></li>
+			</ul>
+		</li>
+		<li>/movie/category/{category}: to search for an award category
+			<ul>
+				<li>EXAMPLE: GET: <a href="http://localhost:8080/movie/category/actor">http://localhost:8080/movie/category/actor</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+</body>
+</html>
