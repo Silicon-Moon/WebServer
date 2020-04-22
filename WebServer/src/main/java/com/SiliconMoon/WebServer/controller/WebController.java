@@ -12,7 +12,6 @@ import com.SiliconMoon.WebServer.controller.Bridge;
 @RestController
 public class WebController {
 	
-
 	//Retrieves a collection of Movie Awards
 	@RequestMapping("/movie")
 	public CollectionGetResponse[] findMovie() {		
