@@ -43,6 +43,26 @@ public class WebController {
         return resArray;
 	
 	}
+   
+   //Retrieves a collection of Movies in Alphabetical order 
+	@RequestMapping("/movie/ASC")
+	public CollectionGetResponse[] sortMoviesASC() {		
+		// SQL QUERY that retrieves all rows and searches for entities close to the parameter in Ascending Order
+		String sql = "SELECT * FROM movies ORDER BY entity ASC";
+		CollectionGetResponse resArray[] = Bridge.collectionRequestGenerator(sql);
+        return resArray;
+	
+	}
+   
+   //Retrieves a collection of Movies from Date Range
+	@RequestMapping("/movie/yearRange/{year1}/{year2}")
+	public CollectionGetResponse[] findDateRange(@PathVariable(value = "year1") int year1, @PathVariable(value = "year2") int year2) {		
+		// SQL QUERY that retrieves all rows and searches for entities in parameter range
+		String sql = "SELECT * FROM movies WHERE \"year\" BETWEEN " +year1+" AND "+year2+"";
+		CollectionGetResponse resArray[] = Bridge.collectionRequestGenerator(sql);
+        return resArray;
+	
+	}
 	
 
 }
