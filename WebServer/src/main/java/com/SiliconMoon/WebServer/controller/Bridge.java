@@ -22,6 +22,50 @@ public class Bridge {
 	public static int counter=0;
 	public static Connection conn = WebServerApplication.connect("new.db");
 	
+	public static String sqlGenerator(String sql, String title, String category, int year, String winner)
+	{
+		if (! sql.contains("WHERE"))
+		{
+			if(! title.equals(""))
+			{
+				sql += " WHERE lower(entity) LIKE '%" + title + "%'";
+			}
+			else if (! category.equals(""))
+			{
+				sql += " WHERE lower(category) LIKE '%" + category + "%'";
+			}
+			else if (year != 0)
+			{
+				sql += " WHERE \"year\" = " + year;
+			}
+			else if (! winner.equals(""))
+			{
+				sql += " WHERE lower(winner) LIKE '%" + winner + "%'";
+			}
+		}
+		
+		if(! title.equals("") & ! sql.contains("entity"))
+		{
+			sql += " AND lower(entity) LIKE '%" + title + "%'";
+		}
+		
+		if (! category.equals("") & ! sql.contains("category"))
+		{
+			sql += " AND lower(category) LIKE '%" + category + "%'";
+		}
+		
+		if (year != 0 & ! sql.contains("\"year\""))
+		{
+			sql += " AND \"year\" = " + year;
+		}
+		
+		if (! winner.equals("") & ! sql.contains("winner"))
+		{
+			sql += " AND lower(winner) LIKE '%" + winner + "%'";
+		}
+		
+		return sql;
+	}
 	
 	/* 
 	singletonRequestGenerator
@@ -45,7 +89,6 @@ public class Bridge {
         				ResultSet.TYPE_SCROLL_INSENSITIVE,
         				ResultSet.CONCUR_UPDATABLE);
         
-        		
         		//Get the result
         		ResultSet res = statement.executeQuery(sql);
 
@@ -92,7 +135,7 @@ public class Bridge {
             	//Close all the open connections so we don't lock ourselves out of the database. 
         		res.close();
         		statement.close();
-        		conn.close();
+        		//conn.close();
     
         		return resArray;
 
@@ -166,7 +209,7 @@ public class Bridge {
             	//Close all the open connections so we don't lock ourselves out of the database. 
         		res.close();
         		statement.close();
-        		conn.close();
+        		//conn.close();
     
         		return resArray;
 
@@ -211,7 +254,6 @@ public class Bridge {
 					.asString();
 				
 			String omdbData = response.getBody().toString();
-			System.out.println(omdbData);
 			omdbData = omdbData.replaceAll("[\"{}]", "");
 			String[] structuredData = omdbData.split(",");
 					
