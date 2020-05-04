@@ -22,16 +22,18 @@ public class Bridge {
 	public static int counter=0;
 	public static Connection conn = WebServerApplication.connect("new.db");
 	
-	public static String sqlGenerator(String sql, String title, String category, int year, String winner)
+	public static String sqlGenerator(String sql, String title, String category, int year, String winner, String asc, String desc)
 	{
 		if (! sql.contains("WHERE"))
 		{
 			if(! title.equals(""))
 			{
+				title = title.replaceAll("[+]", " ");
 				sql += " WHERE lower(entity) LIKE '%" + title + "%'";
 			}
 			else if (! category.equals(""))
 			{
+				category = category.replaceAll("[+]", " ");
 				sql += " WHERE lower(category) LIKE '%" + category + "%'";
 			}
 			else if (year != 0)
@@ -46,11 +48,13 @@ public class Bridge {
 		
 		if(! title.equals("") & ! sql.contains("entity"))
 		{
+			title = title.replaceAll("[+]", " ");
 			sql += " AND lower(entity) LIKE '%" + title + "%'";
 		}
 		
 		if (! category.equals("") & ! sql.contains("category"))
 		{
+			category = category.replaceAll("[+]", " ");
 			sql += " AND lower(category) LIKE '%" + category + "%'";
 		}
 		
@@ -62,6 +66,29 @@ public class Bridge {
 		if (! winner.equals("") & ! sql.contains("winner"))
 		{
 			sql += " AND lower(winner) LIKE '%" + winner + "%'";
+		}
+	
+		if (! asc.equals(""))
+		{
+			if (asc.contentEquals("year"))
+			{
+				sql += " ORDER BY \"year\" ASC";
+			}
+			else
+			{
+				sql += " ORDER BY " + asc + " ASC";
+			}
+		}
+		else if (! desc.equals(""))
+		{
+			if (desc.contentEquals("year"))
+			{
+				sql += " ORDER BY \"year\" DESC";
+			}
+			else
+			{
+				sql += " ORDER BY " + desc + " DESC";
+			}
 		}
 		
 		return sql;
