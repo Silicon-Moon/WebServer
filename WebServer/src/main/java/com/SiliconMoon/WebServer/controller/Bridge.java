@@ -32,7 +32,7 @@ public class Bridge {
 			}
 			else if (! category.equals(""))
 			{
-				category = category.replaceAll("\\p{P}", " ");
+				category = category.replaceAll("+", " ");
 				sql += " WHERE lower(category) LIKE '%" + category + "%'";
 			}
 			else if (year != 0)
@@ -52,7 +52,7 @@ public class Bridge {
 		
 		if (! category.equals("") & ! sql.contains("category"))
 		{
-			category = category.replaceAll("\\p{P}", " ");
+			category = category.replaceAll("+", " ");
 			sql += " AND lower(category) LIKE '%" + category + "%'";
 		}
 		
