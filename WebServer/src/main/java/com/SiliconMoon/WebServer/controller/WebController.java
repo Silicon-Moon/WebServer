@@ -61,6 +61,7 @@ public class WebController {
 													@RequestParam(defaultValue="", required=false) String desc) 
 	{
 		category = category.toLowerCase();
+		category = category.replaceAll("\\p{P}", " ");
 		String[] categories = category.split("&");
 		// SQL QUERY that retrieves all rows and searches for entities close to the parameter   
 	    String sql = "SELECT * FROM movies WHERE (lower(category) LIKE '%" + categories[0] + "%'";
