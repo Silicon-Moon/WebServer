@@ -117,7 +117,7 @@ I've been copying and pasting from
 	- EXAMPLE: GET: http://localhost:8080/movie/title/cleo
 	- You can also query:
 		- category
-			- EXAMPLE: GET: http://localhost:8080/movie/title/cleo?category=actor
+			- EXAMPLE: GET: http://localhost:8080/movie/title/cleo?category=sound+recording
 
 
 		- year
@@ -146,10 +146,11 @@ I've been copying and pasting from
 
 - /movie/category/{category}: to search for an award category
 
-	- EXAMPLE: GET: http://localhost:8080/movie/category/actor
+	- EXAMPLE: GET: http://localhost:8080/movie/category/actress
+	- EXAMPLE: GET: http://localhost:8080/movie/category/actress&CINEMATOGRAPHY
 	- You can also query:
 		- title
-			- EXAMPLE: GET: http://localhost:8080/movie/category/actor?title=cleo
+			- EXAMPLE: GET: http://localhost:8080/movie/category/actor?title=bette
 
 
 		- year
@@ -201,14 +202,14 @@ I've been copying and pasting from
 			- category
 			- year
 			- winner
-			- EXAMPLE: GET: http://localhost:8080/movie/year/1934?asc=year
+			- EXAMPLE: GET: http://localhost:8080/movie/year/1934?asc=category
 
 		- desc
 			- entity
 			- category
 			- year
 			- winner
-			- EXAMPLE: GET: http://localhost:8080/movie/year/1934?desc=year
+			- EXAMPLE: GET: http://localhost:8080/movie/year/1934?desc=category
 
 
 - /movie/id/{id}: Search by movie id
