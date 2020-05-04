@@ -61,7 +61,7 @@ public class WebController {
 													@RequestParam(defaultValue="", required=false) String desc) 
 	{
 		category = category.toLowerCase();
-		category = category.replaceAll("+", " ");
+		category = category.replaceAll("[+]", " ");
 		String[] categories = category.split("&");
 		// SQL QUERY that retrieves all rows and searches for entities close to the parameter   
 	    String sql = "SELECT * FROM movies WHERE (lower(category) LIKE '%" + categories[0] + "%'";
@@ -86,7 +86,8 @@ public class WebController {
 												 @RequestParam(defaultValue="", required=false) String asc,
 												 @RequestParam(defaultValue="", required=false) String desc) 
 	{
-		title = title.toLowerCase();			
+		title = title.toLowerCase();	
+		title = title.replaceAll("[+]", " ");
 		// SQL QUERY that retrieves all rows and searches for entities close to the parameter	
 		String sql = "SELECT * FROM movies WHERE lower(entity) LIKE \'%" + title + "%\'";
 		sql = Bridge.sqlGenerator(sql, "", category.toLowerCase(), year, winner.toLowerCase(), asc.toLowerCase(), desc.toLowerCase());

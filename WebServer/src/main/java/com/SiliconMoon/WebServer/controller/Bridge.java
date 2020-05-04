@@ -28,11 +28,12 @@ public class Bridge {
 		{
 			if(! title.equals(""))
 			{
+				title = title.replaceAll("[+]", " ");
 				sql += " WHERE lower(entity) LIKE '%" + title + "%'";
 			}
 			else if (! category.equals(""))
 			{
-				category = category.replaceAll("+", " ");
+				category = category.replaceAll("[+]", " ");
 				sql += " WHERE lower(category) LIKE '%" + category + "%'";
 			}
 			else if (year != 0)
@@ -47,12 +48,13 @@ public class Bridge {
 		
 		if(! title.equals("") & ! sql.contains("entity"))
 		{
+			title = title.replaceAll("[+]", " ");
 			sql += " AND lower(entity) LIKE '%" + title + "%'";
 		}
 		
 		if (! category.equals("") & ! sql.contains("category"))
 		{
-			category = category.replaceAll("+", " ");
+			category = category.replaceAll("[+]", " ");
 			sql += " AND lower(category) LIKE '%" + category + "%'";
 		}
 		

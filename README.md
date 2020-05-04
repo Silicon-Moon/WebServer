@@ -150,7 +150,7 @@ I've been copying and pasting from
 	- EXAMPLE: GET: http://localhost:8080/movie/category/actress&CINEMATOGRAPHY
 	- You can also query:
 		- title
-			- EXAMPLE: GET: http://localhost:8080/movie/category/actor?title=bette
+			- EXAMPLE: GET: http://localhost:8080/movie/category/actress?title=bette
 
 
 		- year
@@ -186,7 +186,7 @@ I've been copying and pasting from
 	- EXAMPLE: GET: http://localhost:8080/movie/year/1934
 	- You can also query:
 		- title
-			- EXAMPLE: GET: http://localhost:8080/movie?title=cleo
+			- EXAMPLE: GET: http://localhost:8080/movie/year/1934?title=cleo
 
 
 		- category
