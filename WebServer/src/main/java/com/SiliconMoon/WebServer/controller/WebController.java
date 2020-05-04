@@ -23,12 +23,12 @@ public class WebController {
 											 @RequestParam(defaultValue="0",required=false) int year,
 											 @RequestParam(defaultValue="", required=false) String winner,
 											 @RequestParam(defaultValue="", required=false) String asc,
-											 @RequestParam(defaultValue="", required=false) String dec) 
+											 @RequestParam(defaultValue="", required=false) String desc) 
 	{		
 		// SQL QUERY that retrieves all rows and searches for entities close to the parameter	
 		String sql = "SELECT * FROM movies";
 		
-		sql = Bridge.sqlGenerator(sql, title.toLowerCase(), category.toLowerCase(), year, winner.toLowerCase(), asc.toLowerCase(), dec.toLowerCase());
+		sql = Bridge.sqlGenerator(sql, title.toLowerCase(), category.toLowerCase(), year, winner.toLowerCase(), asc.toLowerCase(), desc.toLowerCase());
 		CollectionGetResponse resArray[] = Bridge.collectionRequestGenerator(sql);
         return resArray;
 	
@@ -40,12 +40,12 @@ public class WebController {
 												   @RequestParam(defaultValue="", required=false) String category,
 												   @RequestParam(defaultValue="0",required=false) int year,
 												   @RequestParam(defaultValue="", required=false) String asc,
-												   @RequestParam(defaultValue="", required=false) String dec) 
+												   @RequestParam(defaultValue="", required=false) String desc) 
 	{		
 		// SQL QUERY that retrieves all rows and searches for entities close to the parameter	
 		String sql = "SELECT * FROM movies WHERE lower(winner) = true";
 			
-		sql = Bridge.sqlGenerator(sql, title.toLowerCase(), category.toLowerCase(), year, "", asc.toLowerCase(), dec.toLowerCase());
+		sql = Bridge.sqlGenerator(sql, title.toLowerCase(), category.toLowerCase(), year, "", asc.toLowerCase(), desc.toLowerCase());
 		CollectionGetResponse resArray[] = Bridge.collectionRequestGenerator(sql);
 	    return resArray;
 			
@@ -58,7 +58,7 @@ public class WebController {
 													@RequestParam(defaultValue="0", required=false) int year,
 													@RequestParam(defaultValue="", required=false) String winner,
 													@RequestParam(defaultValue="", required=false) String asc,
-													@RequestParam(defaultValue="", required=false) String dec) 
+													@RequestParam(defaultValue="", required=false) String desc) 
 	{
 		category = category.toLowerCase();
 		String[] categories = category.split("&");
@@ -70,7 +70,7 @@ public class WebController {
 	        sql += " OR lower(category) LIKE '%" + categories[i] + "%'";
 	    }
 	    sql += ")";
-	    sql = Bridge.sqlGenerator(sql, title.toLowerCase(), "", year, winner.toLowerCase(), asc.toLowerCase(), dec.toLowerCase());
+	    sql = Bridge.sqlGenerator(sql, title.toLowerCase(), "", year, winner.toLowerCase(), asc.toLowerCase(), desc.toLowerCase());
 		SingletonGetResponse resArray[] = Bridge.singletonRequestGenerator(sql);
 	    return resArray;
 	}
@@ -121,11 +121,11 @@ public class WebController {
 												@RequestParam(defaultValue="", required=false) String category,
 												@RequestParam(defaultValue="", required=false) String winner,
 												@RequestParam(defaultValue="", required=false) String asc,
-												@RequestParam(defaultValue="", required=false) String dec) 
+												@RequestParam(defaultValue="", required=false) String desc) 
 	{		
 		// SQL QUERY that retrieves all rows and searches for entities close to the parameter	
 		String sql = "SELECT * FROM movies WHERE \"year\" = " + year;
-		sql = Bridge.sqlGenerator(sql, title.toLowerCase(), category.toLowerCase(), 0, winner.toLowerCase(), asc.toLowerCase(), dec.toLowerCase());
+		sql = Bridge.sqlGenerator(sql, title.toLowerCase(), category.toLowerCase(), 0, winner.toLowerCase(), asc.toLowerCase(), desc.toLowerCase());
 		SingletonGetResponse resArray[] = Bridge.singletonRequestGenerator(sql);
 		return resArray;
 				
