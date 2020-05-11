@@ -2,132 +2,39 @@
 <head>
 
   <meta charset="UTF-8">
-  <style>
-    body {
-  background-color: goldenrod;
-/*background-image: linear-gradient(315deg, gold 45%, goldenrod 74%);
-*/  
-text-align:center;
-	vertical-align: middle;
-	height: 200px;
-   
-    
-}
-#headImage{
-  display:block;
-  z-index: 1;
-  position:absolute;
-  top:auto;
-}
-input{
-  position: absolute;
-  right:39%;
-  width: 31%;
-  z-index: 3;
-}
-button{
-  color: red;
-  height: 20;
-  position: absolute;
-  right:35%;
-  z-index: 3;
-}
-p{
-  color: white;
-  position: relative;
-  top: 20px;
-  text-shadow:0px 0px 10px black;
+  <link rel="stylesheet" type="text/css" href="Intro_page.css">
 
-  background-image: url("file:///C:/Users/moyga/Desktop/School/Class%20Files/CSC131/Reel.png");
-    background-repeat:repeat-y;
-    background-position:50% 500px;
-  min-height: 500px;
-  z-index: 2;
-}
-/* Dropdown Button */
-.dropbtn {
-  background-color: #FF0000;
-  color: white;
-  padding: 6px;
-  font-size: 12px;
-  width: 70;
-  border: none;
-  position: absolute;
-  right: -300px;
-  z-index: 3;
-  
-}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #FFFFFF;
-  min-width: 15px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 5;
-  position: absolute;
-  top: 20px;
-  right: -300px;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-  color: black;
-  padding: 2px 6px;
-  text-decoration: none;
-  display: block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #FF0000;}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {display: block;}
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {background-color: red;}
-
-  </style>
-
-
-
-
-	<title>Hello!</title>
+  <title>Hello!</title>
 </head>
 <body>
 
-<div class="headImage">
-  <img src="file:///C:/Users/moyga/Desktop/School/Class%20Files/CSC131/headImage.png"/>
-</div>
-    <input placeholder="Search"> <button class="buttonSearch" Type="Button" onclick="load()">Search
-    </button>
-  <div class="dropdown">
-  <button class="dropbtn">Category</button>
-  <div class="dropdown-content"><img alt="" />
-    <a href="#">Title</a>
-    <a href="#">Category</a>
-  </div>
-</div>
+	<div class="headImage">
+  		<img src="headImage.png"/>
+	</div>
+
+    <input placeholder="Search"> 
+    <button class="buttonSearch" Type="Button" onclick="load()">Search</button>
+    
+  	<div class="dropdown">
+  		<button class="dropbtn">Category</button>
+  		<div class="dropdown-content"><img alt="" />
+    		<a href="#">Title</a>
+    		<a href="#">Category</a>
+  		</div>
+	</div>
 <!--
 <div class="reel">
   <img src="file:///C:/Users/moyga/Desktop/School/Class%20Files/CSC131/Reel.png"/>
 </div>
--->
-</div>
+
+</div>-->
   
-    <p id="demo" ></p>
-    Hey there! Click the link to see the things...
+   
+    <p>Hey there! Click the link to see the things...
     
-    <a href="Help.html">Help Info</a>
+    <a href="Help.html" id="help">Help Info</a></p>
+    <div id="root"></div>
+    <script src="front_page.js"></script>
 </body>
-<script>
-		document.getElementById("demo").innerHTML = " Hey Javascript";
-</script>
+
 </html>
