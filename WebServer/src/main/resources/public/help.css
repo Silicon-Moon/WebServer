@@ -3,53 +3,72 @@
 body {
 	
 	background-color: white;
+	background-image: url("Reel.png");
+    	background-repeat:repeat-y;
+    	background-position: left;
+    	background-size: 200px;
+    
+}
+
+a#back{
+	position:absolute;
+	top: 10px;
+	left: 50px;
 }
 
 h1 {
-	color: #000080;
-	text-align: center;
+	color: #D4AF37;
+	text-align: right;
+	font-family: Impact, Charcoal, sans-serif;
+	font-size: 48px;
 	
 }
 
 h2 {
+	color: white;
 	text-align: center;
 }
 
 h3 {
+	color: white;
 	margin-left: 25px;
 	
 }
 
 h4 {
+	color: white;
 	margin-left: 25px;
 	
 }
 
 p {
+	color: white;
 	margin-left: 45px;
 	
 }
 
 ul {
+	color:white;
 	margin-left: 25px
 }
 
 #div1 {
-	background-color: #D3D3D3;
+	background-color: white;
 	margin-left: 55px;
-	border-left: 10px solid #D3D3D3;
+	border-left: 10px solid white;
 	width: 145px;
 }
 
 #div2 {
-	background-color: #D3D3D3;
+	background-color: white;
 	margin-left: 55px;
-	border-left: 10px solid #D3D3D3;
+	border-left: 10px solid white;
 	width: 90px;
 }
 
 #div3 {
-	background-color: #DCDCDC;
+	background-color: black;
+	border-radius: 15px;
 	margin-left: 200px
 	
 }

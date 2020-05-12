@@ -12,26 +12,17 @@
   		<img src="headImage.png"/>
 	</div>
 
-    <input placeholder="Search"> 
-    <!--<button class="buttonSearch" Type="Button" onclick="load()">Search</button>-->
-    
-  	<div class="dropdown">
-  		<button class="dropbtn">Category</button>
-  		<div class="dropdown-content"><img alt="" />
-    		<a href="#">Title</a>
-    		<a href="#">Category</a>
-  		</div>
-	</div>
-<!--
-<div class="reel">
-  <img src="Reel.png"/>
-</div>
+    <input oninput="updateResult(this.value)" placeholder="Search"> 
+	
+	
+	<select id="target">
+	    <option value="title">Title</option>
+	    <option value="category">Category</option>
+    </select>
 
-</div>-->
-  
-   
-    
-    
+    <div id="content_1" class="inv">Content 1</div>
+    <div id="content_2" class="inv">Content 2</div>
+     
     <a href="Help.html" id='help'>Help</a>
     <div id="root">
     	<div class="container"></div>
