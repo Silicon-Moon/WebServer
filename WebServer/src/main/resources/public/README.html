@@ -1,19 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Help Page</title>
-
-<link rel="stylesheet" type="text/css" href="help.css">
-
-</head>
-<body>
-	<a href="/" id='back'>Back</a>
-	<h1>Silicon Moon Movie Database: The Help Page</h1> 
-	
-		
-<div id="div3">
-
+<h1 id="silicon-moon-movie-database">Silicon Moon Movie Database</h1>
 <h3 id="running-the-script">Running the script</h3>
 <p>In order to run the script type:</p>
 <p><code>mvn spring-boot:run</code></p>
@@ -65,7 +50,7 @@
 <hr />
 <h2 id="restful-api">RESTful API</h2>
 <ul>
-<li><h4>/movie: to see a collection of the movies nominated.</h4>
+<li><p>/movie: to see a collection of the movies nominated.</p>
 <ul>
 <li>EXAMPLE: GET: http://localhost:8080/movie</li>
 <li>You can also query:
@@ -104,7 +89,7 @@
 </ul></li>
 </ul></li>
 </ul></li>
-<li><h4>/movie/ASC: sort movies in ascending order according to title</h4>
+<li><p>/movie/ASC: sort movies in ascending order according to title</p>
 <ul>
 <li>EXAMPLE: GET: http://localhost:8080/movie/ASC</li>
 </ul></li>
@@ -143,7 +128,7 @@
 </ul></li>
 </ul></li>
 </ul></li>
-<li><h4>/movie/title/{title}: to search for a movie title</h4>
+<li><p>/movie/title/{title}: to search for a movie title</p>
 <ul>
 <li>EXAMPLE: GET: http://localhost:8080/movie/title/cleo</li>
 <li>You can also query:
@@ -178,7 +163,7 @@
 </ul></li>
 </ul></li>
 </ul></li>
-<li><h4>/movie/category/{category}: to search for an award category</h4>
+<li><p>/movie/category/{category}: to search for an award category</p>
 <ul>
 <li>EXAMPLE: GET: http://localhost:8080/movie/category/actress</li>
 <li>EXAMPLE: GET: http://localhost:8080/movie/category/actress&amp;CINEMATOGRAPHY</li>
@@ -214,11 +199,11 @@
 </ul></li>
 </ul></li>
 </ul></li>
-<li><h4>/movie/yearRange/{year1}/{year2}: Search by date range</h4>
+<li><p>/movie/yearRange/{year1}/{year2}: Search by date range</p>
 <ul>
 <li>EXAMPLE: GET: http://localhost:8080/movie/yearRange/1934/1940</li>
 </ul></li>
-<li><h4>/movie/year/{year}: Search by one year</h4>
+<li><p>/movie/year/{year}: Search by one year</p>
 <ul>
 <li>EXAMPLE: GET: http://localhost:8080/movie/year/1934</li>
 <li>You can also query:
@@ -253,12 +238,8 @@
 </ul></li>
 </ul></li>
 </ul></li>
-<li><h4>/movie/id/{id}: Search by movie id</h4>
+<li><p>/movie/id/{id}: Search by movie id</p>
 <ul>
 <li>EXAMPLE: GET: http://localhost:8080/movie/id/12</li>
 </ul></li>
 </ul>
-
-</div>
-</body>
-</html>

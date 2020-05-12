@@ -25,19 +25,21 @@ h1 {
 }
 
 h2 {
-	color: white;
+	color: #FFD700;
 	text-align: center;
 }
 
 h3 {
-	color: white;
+	color: #FFD700;
 	margin-left: 25px;
+	font-size: 30px;
 	
 }
 
 h4 {
-	color: white;
+	color: #a60006;
 	margin-left: 25px;
+	font-size: 20px;
 	
 }
 
@@ -68,7 +70,7 @@ ul {
 
 #div3 {
 	background-color: black;
-	border-radius: 15px;
+	border-radius: 20px;
 	margin-left: 200px
 	
 }
