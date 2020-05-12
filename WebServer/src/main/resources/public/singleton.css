@@ -1,0 +1,86 @@
+body{
+	background-color: #D4AF37;
+	
+}
+
+a#back{
+	position:absolute;
+	top: 10px;
+	left: 10px;
+}
+
+#box{
+	position: absolute;
+	top: 170px;
+	right: 40px;
+	background-color: #a60006;
+	border: 5px solid black;
+	border-radius: 15px;
+	width: 700px;
+	height: 435px;
+	z-index:1;
+}
+
+#x{
+	position: absolute;
+	top: 170px;
+	left: 100px;
+}
+
+.info{
+	color: #D4AF37;
+  	z-index: 2;
+}
+
+entity{
+	position: relative;
+	text-align: center;
+	top: 0px;
+	left: 400px;
+	font-size: 80px;
+	font-family: Impact, Charcoal, sans-serif;
+}
+
+winner {
+	position: relative;
+	font-size:28px;
+	text-align: center;
+	top: 20px;
+	left: 50px;
+	
+	
+}
+
+awards {
+	position: absolute;
+	font-size:20px;
+	text-align: center;
+	top: 55px;
+	left: 50px;
+}
+
+actors {
+	position: absolute;
+	font-size:20px;
+	text-align: left;
+	width: 200px;
+	top: 140px;
+	left: 450px;
+}
+
+released{
+	position: absolute;
+	font-size:20px;
+	text-align: center;
+	top: 80px;
+	left: 50px;
+}
+
+plot{
+	position: absolute;
+	font-size:20px;
+	text-align: left;
+	width: 350px;
+	top: 140px;
+	left: 20px;
+}
