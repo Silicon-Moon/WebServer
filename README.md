@@ -1,4 +1,4 @@
-# WebServer
+# Silicon Moon Movie Database
 
 ### Running the script
 
@@ -21,6 +21,8 @@ If there are any problems let me know! Or if you figure it out, write in here ho
 
 - Eclipse Problem: In order to run code through eclipse, you have to import the project as a maven project. 
 
+- Lost two members of the team! AHHHHHHHH!
+
 -------------------------------------------------------------------------------------------------------------------------------------
 
 ### Adding Code
@@ -36,7 +38,42 @@ I've been copying and pasting from
 
 - Response classes return all their variable, so if you don't want everything to be returned be sure to create a new reponse class. 
 
+-------------------------------------------------------------------------------------------------------------------------------------
 
+## Points
+
+- Many Collection resources:
+	- /movie
+	- /movie/winner
+
+- Many Singleton resources:
+	- /movie/title/cleo?category=assistant+director
+	- /movie/id/288
+
+- Connect to OMDB API to retrieve extra data
+
+- Has a GUI
+
+- Well designed HTML Documentation ;)
+
+- Test-Driven Development on APRIL 20TH, 2020 Then implemented the tests on MAY 4TH, 2020
+
+- Created Contextual Inqueries and Personas. *
+
+- Created Low Fidelity Mock-ups and WireFrame for the pages created. *
+
+- Took a short video clip of pair programming on the GUI. *
+
+- Followed The Java Code Conventions standard, and refactored code on MAY 4TH, 2020
+
+- Used SonarQube. *
+
+- The Site uses Derby, which is a form of SQL used by SPRING BOOT. 
+
+
+GITHUB: https://github.com/Silicon-Moon/WebServer
+
+FLYING DONUT: https://www.flyingdonut.io/app/project/project-id=5e586e37256f0734f4770bd4
 
 -------------------------------------------------------------------------------------------------------------------------------------
 
